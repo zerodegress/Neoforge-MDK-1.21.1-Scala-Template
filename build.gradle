@@ -1,9 +1,10 @@
 plugins {
+    id 'scala'
     id 'java-library'
     id 'eclipse'
     id 'idea'
     id 'maven-publish'
-    id 'net.neoforged.gradle.userdev' version '7.0.170'
+    id 'net.neoforged.gradle.userdev' version '7.0.173'
 }
 
 tasks.named('wrapper', Wrapper).configure {
@@ -20,6 +21,17 @@ group = mod_group_id
 
 repositories {
     mavenLocal()
+
+    maven {
+        name = "kotori316"
+        url = uri("https://maven.kotori316.com")
+        content {
+            includeModule("com.kotori316", "scalablecatsforce-neoforge")
+            includeModule("org.typelevel", "cats-core_3")
+            includeModule("org.typelevel", "cats-kernel_3")
+            includeModule("org.typelevel", "cats-free_3")
+        }
+    }
 }
 
 base {
@@ -90,13 +102,14 @@ configurations {
 }
 
 dependencies {
-    // Specify the version of Minecraft to use.
-    // Depending on the plugin applied there are several options. We will assume you applied the userdev plugin as shown above.
-    // The group for userdev is net.neoforged, the module name is neoforge, and the version is the same as the neoforge version.
-    // You can however also use the vanilla plugin (net.neoforged.gradle.vanilla) to use a version of Minecraft without the neoforge loader.
-    // And its provides the option to then use net.minecraft as the group, and one of; client, server or joined as the module name, plus the game version as version.
-    // For all intends and purposes: You can treat this dependency as if it is a normal library you would use.
     implementation "net.neoforged:neoforge:${neo_version}"
+
+    // scala 
+    compileOnly(group: "org.scala-lang", name: "scala3-library_3", version: "3.3.4")
+    compileOnly(group: "org.typelevel", name: "cats-core_3", version: "2.12.1-kotori")
+    runtimeOnly(group: "com.kotori316", name: "scalablecatsforce-neoforge", version: "3.6.2-build-0", classifier: "with-library") {
+        transitive(false)
+    }
 
     // Example optional mod dependency with JEI
     // The JEI API is declared for compile time use, while the full JEI artifact is used at runtime
@@ -170,4 +183,9 @@ idea {
         downloadSources = true
         downloadJavadoc = true
     }
+}
+
+
+scala {
+    version = '3.3.4'
 }
