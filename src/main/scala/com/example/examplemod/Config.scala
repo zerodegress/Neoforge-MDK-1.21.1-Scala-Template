@@ -37,7 +37,7 @@ object Config {
     // a list of strings that are treated as resource locations for items
     private final val ITEM_STRINGS = BUILDER
             .comment("A list of items to log on common setup.")
-            .defineListAllowEmpty("items", java.util.List.of("minecraft:iron_ingot"), Config.validateItemName)
+            .defineListAllowEmpty("items", java.util.List.of("minecraft:iron_ingot"), () => "minecraft:iron_ingot", Config.validateItemName)
 
     private[examplemod] final val SPEC = BUILDER.build()
 
