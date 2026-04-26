@@ -1,0 +1,15 @@
+[versions]
+minecraft = "1.21.1"
+neoForge = "21.1.227"
+neoGradleUserDev = "7.1.25"
+scala = "3.3.4"
+cats = "2.12.1-kotori"
+scalablecatsforce = "3.6.2-build-0"
+
+[libraries]
+scala-library = { group = "org.scala-lang", name = "scala3-library_3", version.ref = "scala" }
+cats-core = { group = "org.typelevel", name = "cats-core_3", version.ref = "cats" }
+scalablecatsforce-neoforge = { group = "com.kotori316", name = "scalablecatsforce-neoforge", version.ref = "scalablecatsforce" }
+
+[plugins]
+neoGradleUserDev = { id = "net.neoforged.gradle.userdev", version.ref = "neoGradleUserDev" }

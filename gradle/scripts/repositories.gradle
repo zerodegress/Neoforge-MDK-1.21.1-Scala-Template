@@ -1,0 +1,14 @@
+repositories {
+    mavenLocal()
+
+    maven {
+        name = "kotori316"
+        url = uri("https://maven.kotori316.com")
+        content {
+            includeModule("com.kotori316", "scalablecatsforce-neoforge")
+            includeModule("org.typelevel", "cats-core_3")
+            includeModule("org.typelevel", "cats-kernel_3")
+            includeModule("org.typelevel", "cats-free_3")
+        }
+    }
+}

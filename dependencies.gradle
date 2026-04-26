@@ -1,0 +1,9 @@
+dependencies {
+    implementation "net.neoforged:neoforge:${libs.versions.neoForge.get()}"
+
+    compileOnly libs.scala.library
+    compileOnly libs.cats.core
+    runtimeOnly(libs.scalablecatsforce.neoforge) {
+        transitive(false)
+    }
+}
