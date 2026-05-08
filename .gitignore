@@ -28,6 +28,7 @@ repo
 .vscode/*
 .metals
 .bloop
+.zed
 
 # agents
 .codex
